@@ -11,18 +11,12 @@ function Home() {
   return (
     <>
       <div class="jumbotron">
-        <h1 class="display-4">Welcome!! {user ? user.name : <></>}</h1>
-        <p class="lead">
-          This is a simple hero unit, a simple jumbotron-style component for
-          calling extra attention to featured content or information.
-        </p>
-        <hr class="my-4" />
-        <p>
-          It uses utility classes for typography and spacing to space content
-          out within the larger container.
-        </p>
+        <h3 class="display-5">Welcome!! {user ? user.name : null}</h3>
+
+        <hr class="my-2" />
+        <p class="lead">Add, Edit or Delete Your Contacts</p>
         <a class="btn btn-outline-info" href="#" role="button">
-          Learn more
+          Add Contacts
         </a>
       </div>
     </>

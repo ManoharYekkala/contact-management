@@ -9,7 +9,11 @@ function Navbar({ title = "Contactium" }) {
   const { toast } = useContext(ContextToast);
   const nav = useNavigate();
   return (
-    <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+    <nav
+      className="navbar navbar-expand-lg bg-primary"
+      style={{ height: "60px" }}
+      data-bs-theme="dark"
+    >
       <div className="container-fluid">
         <Link to="/" style={{ textDecoration: "none" }}>
           <a className="navbar-brand">{title}</a>
@@ -29,19 +33,26 @@ function Navbar({ title = "Contactium" }) {
         <div className="collapse navbar-collapse" id="navbarColor01">
           <ul className="navbar-nav ms-auto">
             {user ? (
-              <li className="nav-item">
-                <button
-                  className="btn btn-dark ml-3"
-                  onClick={() => {
-                    setUser(null);
-                    toast.success("Logged Out successfully ");
-                    localStorage.clear();
-                    nav("/login", { replace: true });
-                  }}
-                >
-                  Logout
-                </button>
-              </li>
+              <>
+                <li className="nav-item ">
+                  <Link to="/createcontact" style={{ textDecoration: "none" }}>
+                    <a className="nav-link ">Add Contact</a>
+                  </Link>
+                </li>
+                <li className="nav-item " style={{ marginLeft: "16px" }}>
+                  <button
+                    className="btn d-flex align-items-center btn-dark ml-3"
+                    onClick={() => {
+                      setUser(null);
+                      toast.success("Logged Out successfully ");
+                      localStorage.clear();
+                      nav("/login", { replace: true });
+                    }}
+                  >
+                    Logout
+                  </button>
+                </li>
+              </>
             ) : (
               <>
                 <li className="nav-item">
