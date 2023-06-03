@@ -39,6 +39,11 @@ function Navbar({ title = "Contactium" }) {
                     <a className="nav-link ">Add Contact</a>
                   </Link>
                 </li>
+                <li className="nav-item ">
+                  <Link to="/mycontacts" style={{ textDecoration: "none" }}>
+                    <a className="nav-link ">All Contacts</a>
+                  </Link>
+                </li>
                 <li className="nav-item " style={{ marginLeft: "16px" }}>
                   <button
                     className="btn d-flex align-items-center btn-dark ml-3"
