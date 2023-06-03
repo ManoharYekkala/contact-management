@@ -102,4 +102,20 @@ router.delete("/delete/:id", auth, async (req, res) => {
   }
 });
 
+router.get("/contact/:id", auth, async (req, res) => {
+  const { id } = req.params;
+
+  if (!id) return res.status(400).json({ error: "no id specified." });
+
+  if (!mongoose.isValidObjectId(id))
+    return res.status(400).json({ error: "please enter a valid id" });
+  try {
+    const contact = await Contact.findOne({ _id: id });
+
+    return res.status(200).json({ ...contact._doc });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 module.exports = router;

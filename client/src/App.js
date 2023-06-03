@@ -9,6 +9,7 @@ import { AuthContextProvider } from "./context/AuthContext";
 import { ToastContextProvider } from "./context/ContextToast";
 import CreateContact from "./pages/CreateContact";
 import AllContact from "./pages/AllContact";
+import EditContact from "./pages/EditContact";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/createcontact" element={<CreateContact />} />
             <Route path="/mycontacts" element={<AllContact />} />
+            <Route path="/edit/:id" element={<EditContact />} />
           </Switch>
         </Layout>
       </AuthContextProvider>
