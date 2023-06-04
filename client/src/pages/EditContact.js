@@ -25,14 +25,17 @@ const EditContact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`http://localhost:7000/api/contact`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify({ id, ...contactData }),
-    });
+    const res = await fetch(
+      `https://contact-api-s2j7.onrender.com/api/contact`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({ id, ...contactData }),
+      }
+    );
     const result = await res.json();
     if (!result.error) {
       toast.success(`Contact: ${contactData.name} Successfully Updated`);
@@ -52,12 +55,15 @@ const EditContact = () => {
     (async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:7000/api/contact/${id}`, {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        });
+        const res = await fetch(
+          `https://contact-api-s2j7.onrender.com/api/contact/${id}`,
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
         const result = await res.json();
         console.log(result);
         setContactData({
