@@ -10,7 +10,7 @@ function Navbar({ title = "Contactium" }) {
   const nav = useNavigate();
   return (
     <nav
-      className="navbar navbar-expand-lg bg-primary"
+      className="navbar navbar-expand-lg  bg-primary"
       style={{ height: "60px" }}
       data-bs-theme="dark"
     >

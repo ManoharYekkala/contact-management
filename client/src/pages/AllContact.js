@@ -3,6 +3,7 @@ import Spinner from "../components/Spinner";
 import { Modal } from "react-bootstrap";
 import ContextToast from "../context/ContextToast";
 import { Link } from "react-router-dom";
+import "./Table.css";
 
 const AllContact = () => {
   const { toast } = useContext(ContextToast);
@@ -10,6 +11,7 @@ const AllContact = () => {
   const [loading, setLoading] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [modalData, setModalData] = useState({});
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -59,12 +61,20 @@ const AllContact = () => {
       }
     }
   };
+  const handleSearch = (e) => {
+    e.preventDefault();
+
+    const searchResults = contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(searchInput.toLowerCase())
+    );
+
+    setContacts(searchResults);
+  };
 
   return (
     <>
       <div className="all-contact-container">
-        <h2>Your Contacts</h2>
-        <hr className="my-4" />
+        <hr className="my-2" />
         {loading ? (
           <Spinner splash="Loading Contacts..." />
         ) : (
@@ -72,33 +82,65 @@ const AllContact = () => {
             {contacts.length === 0 ? (
               <h3>No Contacts</h3>
             ) : (
-              <table className="table table-hover">
-                <thead>
-                  <tr className="table-primary">
-                    <th scope="col">Name</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Phone No.</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {contacts.map((contact) => (
-                    <tr
-                      key={contact._id}
-                      onClick={() => {
-                        setModalData({});
-                        setModalData(contact);
-                        setShowModal(true);
-                      }}
-                    >
-                      <th scope="row">{contact.name}</th>
-                      <td>{contact.address}</td>
-                      <td>{contact.email}</td>
-                      <td>{contact.phone}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <>
+                <form className="d-flex" onSubmit={handleSearch}>
+                  <input
+                    type="text"
+                    name="searchInput"
+                    id="searchInput"
+                    className="form-control my-2"
+                    placeholder="Search contacts..."
+                    value={searchInput}
+                    onChange={(e) => {
+                      setSearchInput(e.target.value);
+                    }}
+                  ></input>
+                  <button
+                    type="submit"
+                    className="btn btn-sm btn-info"
+                    style={{ height: "40px", marginTop: "7px" }}
+                  >
+                    Search
+                  </button>
+                </form>
+                <p>
+                  Total Contacts : <strong>{contacts.length}</strong>
+                  <span>
+                    <a href="/" className="btn btn-outline-warning btn-sm mx-3">
+                      Reload Contact
+                    </a>
+                  </span>
+                </p>
+                <div className="table-container">
+                  <table className="table table-hover">
+                    <thead className="sticky-top">
+                      <tr className="table-primary">
+                        <th scope="col">Name</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Phone No.</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {contacts.map((contact) => (
+                        <tr
+                          key={contact._id}
+                          onClick={() => {
+                            setModalData({});
+                            setModalData(contact);
+                            setShowModal(true);
+                          }}
+                        >
+                          <th scope="row">{contact.name}</th>
+                          <td>{contact.address}</td>
+                          <td>{contact.email}</td>
+                          <td>{contact.phone}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </>
             )}
           </>
         )}

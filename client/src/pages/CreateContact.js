@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import AuthContext from "../context/AuthContext";
 import ContextToast from "../context/ContextToast";
-import contactaddpic from "../contactadd.svg";
 
 const CreateContact = () => {
   const { user } = useContext(AuthContext);
+  const nav = useNavigate();
   const [contactData, setContactData] = useState({
     name: "",
     address: "",
@@ -37,6 +39,7 @@ const CreateContact = () => {
         email: "",
         phone: "",
       });
+      nav("/mycontacts", { replace: true });
     } else {
       toast.error(result.error);
     }

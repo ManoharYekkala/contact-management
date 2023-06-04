@@ -1,0 +1,25 @@
+/* Table.css */
+
+.table-container {
+  max-height: 400px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #f9eaeb transparent;
+}
+
+.table-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.table-container::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background-color: #e4dbdc;
+  border-radius: 3px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  background-color: #f4ebeb;
+}

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const connectDB = async () => {
   return mongoose
     .connect(
-      "mongodb+srv://manoharyekkala:Manu8361@contact-manage.36vmmow.mongodb.net/?retryWrites=true&w=majority"
+      `mongodb+srv://manoharyekkala:${process.env.MONGO_SECRET}@contact-manage.36vmmow.mongodb.net/?retryWrites=true&w=majority`
     )
     .then(() => {
       console.log("connection established");
