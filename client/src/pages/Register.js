@@ -42,89 +42,104 @@ function Register() {
   };
 
   return (
-    <div>
-      <h3>Create a account</h3>
-      {/* <ToastContainer autoClose={2000} /> */}
-
-      <form onSubmit={handleSubmit}>
-        <div class="form-floating mb-3 mt-3">
-          <input
-            type="text"
-            class="form-control"
-            id="nameInput"
-            name="name"
-            value={credentials.name}
-            onChange={onInputChange}
-            placeholder="Enter your name"
-            required
-          />
-          <label for="nameInput">Your Name</label>
+    <div className="container">
+      <div className="row">
+        <div className="col-md-6" style={{ maxHeight: "100%" }}>
+          <div className="card rounded">
+            <div className="card-body">
+              <h3>Create an Account</h3>
+              <form onSubmit={handleSubmit}>
+                <div className="form-floating mb-3 mt-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="nameInput"
+                    name="name"
+                    value={credentials.name}
+                    onChange={onInputChange}
+                    placeholder="Enter your name"
+                    required
+                  />
+                  <label htmlFor="nameInput">Your Name</label>
+                </div>
+                <div className="form-floating mb-3 mt-3">
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="emailInput"
+                    name="email"
+                    value={credentials.email}
+                    aria-describedby="emailHelp"
+                    onChange={onInputChange}
+                    placeholder="Enter Your Email"
+                    required
+                  />
+                  <label htmlFor="emailInput">Email address</label>
+                </div>
+                <div className="form-floating mb-3 mt-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="mobileInput"
+                    name="mobile"
+                    value={credentials.mobile}
+                    onChange={onInputChange}
+                    placeholder="Enter your mobile number"
+                    required
+                  />
+                  <label htmlFor="mobileInput">Mobile Number</label>
+                </div>
+                <div className="form-floating mb-3 mt-3">
+                  <input
+                    type="password"
+                    className="form-control"
+                    name="password"
+                    id="passwordInput"
+                    value={credentials.password}
+                    onChange={onInputChange}
+                    placeholder="Enter Your Password"
+                    required
+                  />
+                  <label htmlFor="passwordInput">Password</label>
+                </div>
+                <div className="form-floating mb-3 mt-3">
+                  <input
+                    type="password"
+                    className="form-control"
+                    name="confirmPassword"
+                    value={credentials.confirmPassword}
+                    id="confirmPassword"
+                    onChange={onInputChange}
+                    placeholder="Re-enter Your Password"
+                    required
+                  />
+                  <label htmlFor="confirmPassword">Confirm Password</label>
+                </div>
+                <input
+                  type="submit"
+                  value="Register"
+                  className="btn btn-primary my-4"
+                />
+                <p>
+                  Already have an account? <Link to="/login">Login now</Link>
+                </p>
+              </form>
+            </div>
+          </div>
         </div>
-        <div class="form-floating mb-3 mt-3">
-          <input
-            type="email"
-            class="form-control"
-            id="emailInput"
-            name="email"
-            value={credentials.email}
-            aria-describedby="emailHelp"
-            onChange={onInputChange}
-            placeholder="Enter Your Email"
-            required
+        <div className="col-md-6">
+          <img
+            src="https://i.ibb.co/W0Nn8G2/register.png"
+            alt="register"
+            style={{
+              width: "90%",
+              height: "80%",
+              marginLeft: "50px",
+              marginTop: "30px",
+            }}
           />
-          <label for="emailInput">Email address</label>
-          {/* <small id="emailHelp" class="form-text text-muted">
-            We'll never share your email with anyone else.
-          </small> */}
         </div>
-        <div class="form-floating mb-3 mt-3">
-          <input
-            type="text"
-            class="form-control"
-            id="mobileInput"
-            name="mobile"
-            value={credentials.mobile}
-            onChange={onInputChange}
-            placeholder="Enter your mobile number"
-            required
-          />
-          <label for="mobileInput">Mobile Number</label>
-        </div>
-        <div class="form-floating mb-3 mt-3">
-          <input
-            type="password"
-            class="form-control"
-            name="password"
-            id="passwordInput"
-            value={credentials.password}
-            onChange={onInputChange}
-            placeholder="Enter Your Password"
-            required
-          />
-          <label for="passwordInput">Password</label>
-        </div>
-        <div class="form-floating mb-3 mt-3">
-          <input
-            type="password"
-            class="form-control"
-            name="confirmPassword"
-            value={credentials.confirmPassword}
-            id="confirmPassword"
-            onChange={onInputChange}
-            placeholder="Re-enter Your Password"
-            required
-          />
-          <label for="confirmPassword">Confirm Password</label>
-        </div>
-        <input
-          type="submit"
-          value="Register"
-          className="btn btn-primary my-4"
-        ></input>
-        <p>
-          Already have an account? <Link to="/login">Login now</Link>
-        </p>
-      </form>
+      </div>
     </div>
   );
 }

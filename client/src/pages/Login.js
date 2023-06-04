@@ -29,53 +29,64 @@ function Login() {
     loginUser(credentials);
   };
   return (
-    <div>
-      {/* <ToastContainer autoClose={2000} /> */}
-      <h3>Login</h3>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="emailInput" className="form-label mt-4">
-            Email address
-          </label>
-          <input
-            type="email"
-            className="form-control"
-            id="emailInput"
-            name="email"
-            value={credentials.email}
-            aria-describedby="emailHelp"
-            onChange={onInputChange}
-            placeholder="Enter Your Email"
-            required
-          />
-          {/* <small id="emailHelp" className="form-text text-muted">
+    <div style={{ display: "flex" }}>
+      <div style={{ flex: 1, marginLeft: "-20px" }} className="mb-3">
+        <img
+          src="https://i.ibb.co/93shp9R/login.jpg"
+          alt="login img"
+          style={{ width: "100%", height: "100%" }}
+        />
+      </div>
+      <div style={{ flex: 1, padding: "20px" }}>
+        {/* <ToastContainer autoClose={2000} /> */}
+        <div className="my-5">
+          <h3>Login</h3>
+          <form onSubmit={handleSubmit}>
+            <div className="form-group">
+              <label htmlFor="emailInput" className="form-label mt-4">
+                Email address
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="emailInput"
+                name="email"
+                value={credentials.email}
+                aria-describedby="emailHelp"
+                onChange={onInputChange}
+                placeholder="Enter Your Email"
+                required
+              />
+              {/* <small id="emailHelp" className="form-text text-muted">
             We'll never share your email with anyone else.
           </small> */}
+            </div>
+            <div className="form-group">
+              <label htmlFor="passwordInput" className="form-label mt-4">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                name="password"
+                value={credentials.password}
+                id="passwordInput"
+                onChange={onInputChange}
+                placeholder="Enter Your Password"
+                required
+              />
+            </div>
+            <input
+              type="submit"
+              value="Login"
+              className="btn btn-primary my-4"
+            />
+            <p>
+              Don't have an account? <Link to="/register">Create account?</Link>
+            </p>
+          </form>
         </div>
-        <div className="form-group">
-          <label htmlFor="passwordInput" className="form-label mt-4">
-            Password
-          </label>
-          <input
-            type="password"
-            className="form-control"
-            name="password"
-            value={credentials.password}
-            id="passwordInput"
-            onChange={onInputChange}
-            placeholder="Enter Your Password"
-            required
-          />
-        </div>
-        <input
-          type="submit"
-          value="Login"
-          className="btn btn-primary my-4"
-        ></input>
-        <p>
-          Don't have an account? <Link to="/register">Create account?</Link>
-        </p>
-      </form>
+      </div>
     </div>
   );
 }
