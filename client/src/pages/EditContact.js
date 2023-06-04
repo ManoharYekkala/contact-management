@@ -25,17 +25,14 @@ const EditContact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(
-      `https://contact-api-s2j7.onrender.com/api/contact`,
-      {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        body: JSON.stringify({ id, ...contactData }),
-      }
-    );
+    const res = await fetch(`https://contact-api.up.railway.app/api/contact`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: JSON.stringify({ id, ...contactData }),
+    });
     const result = await res.json();
     if (!result.error) {
       toast.success(`Contact: ${contactData.name} Successfully Updated`);
@@ -56,7 +53,7 @@ const EditContact = () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `https://contact-api-s2j7.onrender.com/api/contact/${id}`,
+          `https://contact-api.up.railway.app/api/contact/${id}`,
           {
             method: "GET",
             headers: {

@@ -18,7 +18,7 @@ const AllContact = () => {
       setLoading(true);
       try {
         const res = await fetch(
-          `https://contact-api-s2j7.onrender.com/api/mycontacts`,
+          `https://contact-api.up.railway.app/api/mycontacts`,
           {
             method: "GET",
             headers: {
@@ -46,7 +46,7 @@ const AllContact = () => {
     if (window.confirm("Confirm Deletion? Contact will be lost forever.")) {
       try {
         const res = await fetch(
-          `https://contact-api-s2j7.onrender.com/api/delete/${id}`,
+          `https://contact-api.up.railway.app/api/delete/${id}`,
           {
             method: "DELETE",
             headers: {
