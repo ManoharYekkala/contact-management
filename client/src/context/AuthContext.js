@@ -29,8 +29,17 @@ export const AuthContextProvider = ({ children }) => {
       });
       const result = await res.json();
       if (!result.error) {
+        if (
+          location.pathname === "/login" ||
+          location.pathname === "/register"
+        ) {
+          setTimeout(() => {
+            nav("/", { replace: true });
+          }, 500);
+        } else {
+          nav(location.pathname ? location.pathname : "/");
+        }
         setUser(result);
-        nav("/", { replace: true });
       } else {
         nav("/login", { replace: true });
       }
