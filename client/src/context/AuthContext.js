@@ -21,7 +21,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const isUserLoggedIn = async () => {
     try {
-      const res = await fetch(`http://localhost:7000/api/user`, {
+      const res = await fetch(`https://contact-api.up.railway.app/api/user`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -49,7 +49,7 @@ export const AuthContextProvider = ({ children }) => {
   //login
   const loginUser = async (userData) => {
     try {
-      const res = await fetch(`http://localhost:7000/api/login`, {
+      const res = await fetch(`https://contact-api.up.railway.app/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...userData }),
@@ -79,11 +79,14 @@ export const AuthContextProvider = ({ children }) => {
   //register
   const registerUser = async (userData) => {
     try {
-      const res = await fetch(`http://localhost:7000/api/register`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...userData }),
-      });
+      const res = await fetch(
+        `https://contact-api.up.railway.app/api/register`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ...userData }),
+        }
+      );
       const result = await res.json();
       if (!result.error) {
         toast.success("Successfully registered, Login into you account");
