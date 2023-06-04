@@ -86,7 +86,14 @@ const AllContact = () => {
         ) : (
           <>
             {contacts.length === 0 ? (
-              <h3>No Contacts</h3>
+              <h3>
+                No Contacts
+                <span>
+                  <a href="/" className="btn btn-outline-warning btn-sm mx-3">
+                    Reload Contact
+                  </a>
+                </span>
+              </h3>
             ) : (
               <>
                 <form className="d-flex" onSubmit={handleSearch}>
