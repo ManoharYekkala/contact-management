@@ -32,14 +32,16 @@ const CreateContact = () => {
     });
     const result = await res.json();
     if (!result.error) {
-      toast.success(`Contact: ${contactData.name} Successfully Added`);
+      toast.success(
+        `Contact: ${contactData.name} Successfully Added , click Reload Contact to refresh`
+      );
       setContactData({
         name: "",
         address: "",
         email: "",
         phone: "",
       });
-      nav("/mycontacts", { replace: true });
+      // nav("/mycontacts", { replace: true });
     } else {
       toast.error(result.error);
     }
