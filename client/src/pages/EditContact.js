@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import AuthContext from "../context/AuthContext";
 import ContextToast from "../context/ContextToast";
-import contactaddpic from "../contactadd.svg";
 import { useNavigate, useParams } from "react-router";
 import { Spinner } from "react-bootstrap";
 
