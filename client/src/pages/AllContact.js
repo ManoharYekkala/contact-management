@@ -4,6 +4,7 @@ import { Modal } from "react-bootstrap";
 import ContextToast from "../context/ContextToast";
 import { Link } from "react-router-dom";
 import "./Table.css";
+import { HOST } from "../constants";
 
 const AllContact = () => {
   const { toast } = useContext(ContextToast);
