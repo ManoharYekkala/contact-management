@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 import ContextToast from "./ContextToast";
+import { HOST } from "../constants";
 
 const AuthContext = createContext();
 
@@ -21,7 +22,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const isUserLoggedIn = async () => {
     try {
-      const res = await fetch(`${process.env.HOST}/api/user`, {
+      const res = await fetch(`${HOST}/api/user`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -49,7 +50,7 @@ export const AuthContextProvider = ({ children }) => {
   //login
   const loginUser = async (userData) => {
     try {
-      const res = await fetch(`${process.env.HOST}/api/login`, {
+      const res = await fetch(`${HOST}/api/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...userData }),
@@ -79,7 +80,7 @@ export const AuthContextProvider = ({ children }) => {
   //register
   const registerUser = async (userData) => {
     try {
-      const res = await fetch(`${process.env.HOST}/api/register`, {
+      const res = await fetch(`${HOST}/api/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ ...userData }),

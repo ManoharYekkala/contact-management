@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import AuthContext from "../context/AuthContext";
 import ContextToast from "../context/ContextToast";
+import { HOST } from "../constants";
 
 const CreateContact = () => {
   const { user } = useContext(AuthContext);
@@ -22,7 +23,7 @@ const CreateContact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`${process.env.HOST}/api/contact`, {
+    const res = await fetch(`${HOST}/api/contact`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

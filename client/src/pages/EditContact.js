@@ -3,6 +3,7 @@ import AuthContext from "../context/AuthContext";
 import ContextToast from "../context/ContextToast";
 import { useNavigate, useParams } from "react-router";
 import { Spinner } from "react-bootstrap";
+import { HOST } from "../constants";
 
 const EditContact = () => {
   const { id } = useParams();
@@ -24,7 +25,7 @@ const EditContact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`${process.env.HOST}/api/contact`, {
+    const res = await fetch(`${HOST}/api/contact`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +52,7 @@ const EditContact = () => {
     (async () => {
       setLoading(true);
       try {
-        const res = await fetch(`${process.env.HOST}/api/contact/${id}`, {
+        const res = await fetch(`${HOST}/api/contact/${id}`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
