@@ -22,7 +22,7 @@ const CreateContact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`https://contact-api.up.railway.app/api/contact`, {
+    const res = await fetch(`${process.env.HOST}/api/contact`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

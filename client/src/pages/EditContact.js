@@ -24,7 +24,7 @@ const EditContact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch(`https://contact-api.up.railway.app/api/contact`, {
+    const res = await fetch(`${process.env.HOST}/api/contact`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -51,15 +51,12 @@ const EditContact = () => {
     (async () => {
       setLoading(true);
       try {
-        const res = await fetch(
-          `https://contact-api.up.railway.app/api/contact/${id}`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+        const res = await fetch(`${process.env.HOST}/api/contact/${id}`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         const result = await res.json();
         console.log(result);
         setContactData({

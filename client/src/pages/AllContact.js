@@ -17,15 +17,12 @@ const AllContact = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await fetch(
-          `https://contact-api.up.railway.app/api/mycontacts`,
-          {
-            method: "GET",
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+        const res = await fetch(`${process.env.HOST}/api/mycontacts`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         const result = await res.json();
         if (!result.error) {
           setContacts(result.contacts);
@@ -45,15 +42,12 @@ const AllContact = () => {
   const deleteContact = async (id) => {
     if (window.confirm("Confirm Deletion? Contact will be lost forever.")) {
       try {
-        const res = await fetch(
-          `https://contact-api.up.railway.app/api/delete/${id}`,
-          {
-            method: "DELETE",
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        );
+        const res = await fetch(`${process.env.HOST}/api/delete/${id}`, {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
         const result = await res.json();
         if (!result.error) {
           setContacts(result.myContacts);
